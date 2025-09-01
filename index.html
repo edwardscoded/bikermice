@@ -250,7 +250,7 @@
         // Load the background image
         async function loadBackgroundImage() {
             try {
-                const imageData = await window.fs.readFile('BIKERMICEFROMMARS_FEATURE2.png');
+                const imageData = await window.fs.readFile('bikermice / BIKERMICEFROMMARS_FEATURE2.png');
                 const blob = new Blob([imageData], { type: 'image/png' });
                 const imageUrl = URL.createObjectURL(blob);
                 document.body.style.backgroundImage = `url(${imageUrl})`;
