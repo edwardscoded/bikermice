@@ -14,7 +14,10 @@
         body {
             font-family: 'Arial Black', Arial, sans-serif;
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -25,7 +28,7 @@
             overflow: hidden;
         }
 
-        /* Background overlay for when image is added */
+        /* Background overlay for better text readability */
         body::before {
             content: '';
             position: fixed;
@@ -33,7 +36,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
@@ -89,7 +92,7 @@
             border: 3px solid #fff;
             border-radius: 25px;
             padding: 15px 30px;
-            margin: 20px 0;
+            margin: 20px 0 10px 0;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -128,7 +131,7 @@
             border: 3px solid #ecf0f1;
             border-radius: 25px;
             padding: 15px 30px;
-            margin: 20px 0;
+            margin: 10px 0 20px 0;
             display: inline-flex;
             align-items: center;
             justify-content: space-between;
@@ -244,6 +247,21 @@
     </div>
 
     <script>
+        // Load the background image
+        async function loadBackgroundImage() {
+            try {
+                const imageData = await window.fs.readFile('BIKERMICEFROMMARS_FEATURE2.png');
+                const blob = new Blob([imageData], { type: 'image/png' });
+                const imageUrl = URL.createObjectURL(blob);
+                document.body.style.backgroundImage = `url(${imageUrl})`;
+            } catch (error) {
+                console.log('Background image not found, using default gradient');
+            }
+        }
+
+        // Load background on page load
+        window.addEventListener('load', loadBackgroundImage);
+
         function copyToClipboard() {
             const textToCopy = "CA: COMING SOON";
             navigator.clipboard.writeText(textToCopy).then(function() {
